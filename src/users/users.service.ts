@@ -20,7 +20,23 @@ export class UsersService {
             "name": "John Smith",
             "email": "janesmith",
             "role": "INTERN"
-        }
+        },
+        { 
+            "id": 4,
+            "name": "Jane Smithhh",
+            "email": "janesmith",
+            "role": "INTERN"
+        },
+     
 
     ]
+
+    // creating methods
+
+    findAll(role?: 'INTERN' | "ENGINEER" | "ADMIN"){
+        if(role){
+            return this.users.filter(user => user.role === role)
+        }
+
+    }
 }
