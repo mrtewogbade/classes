@@ -37,6 +37,31 @@ export class UsersService {
         if(role){
             return this.users.filter(user => user.role === role)
         }
-
+        return this.users
     }
+
+    findOne(id: string){
+        return this.users.find(user => user.id === parseInt(id))
+    }
+
+    create(user: {name: string, email: string, role: 'INTERN' | 'ENGINEER' | 'ADMIN'}){
+        const userWithId = {
+            id: this.users.length + 1,
+            ...user
+        }
+        this.users.push(userWithId);
+    }
+
+    update(id: number, userUpdate: {name?: string, email?: string, role?: 'INTERN' | 'ENGINEER' | 'ADMIN'}){
+        this.users = this.users.map(user => {
+            if(user.id === id){
+                return {...user, ...userUpdate}
+            }
+            return user
+        })
+
+        return
+    }
+
+
 }
